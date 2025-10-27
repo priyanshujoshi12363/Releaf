@@ -5,7 +5,7 @@ import cors from 'cors'
 import OpenAI from "openai";
 
 const app = express();
-const Port = 5000
+const Port = process.env.Port || 5000
 
 import authRouter from './src/Routes/authRouter.js'
 
