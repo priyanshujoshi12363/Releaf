@@ -1,0 +1,787 @@
+/* General resets and font */
+.ecosystem-game {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #f0faf0;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  color: #2e4d25;
+}
+
+/* Header */
+.game-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.game-header h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 2rem;
+  flex-grow: 1;
+}
+
+.game-stats span {
+  margin-left: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Main Container */
+.game-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Resources Panel */
+.resources-panel {
+  flex: 0 0 280px;
+  background: #d7f2d0;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: inset 0 0 8px rgba(46,77,37,0.3);
+}
+
+.resources-panel h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: #2a4d20;
+}
+
+.resource-bars, .health-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resource, .health {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #234012;
+}
+
+.resource-bar, .health-bar {
+  background: #bde9a8;
+  border-radius: 6px;
+  height: 16px;
+  overflow: hidden;
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.12);
+}
+
+.resource-fill.energy {
+  background: linear-gradient(90deg, #ffd54f, #fdbb2d);
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.resource-fill.water {
+  background: linear-gradient(90deg, #4fc3f7, #0288d1);
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.resource-fill.nutrients {
+  background: linear-gradient(90deg, #81c784, #388e3c);
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.health-fill {
+  background: #ff6f61;
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 6px 0 0 6px;
+}
+
+.balance-fill {
+  background: #fbc02d;
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 6px 0 0 6px;
+}
+
+/* Ecosystem Display */
+.ecosystem-display {
+  flex: 1 1 600px;
+  background: #e9f3e9;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: inset 0 0 15px rgba(34,77,32,0.15);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ecosystem-display h3 {
+  color: #2e4d25;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.ecosystem-visual {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  background: #c6e4b0;
+  border-radius: 10px;
+  padding: 10px;
+  overflow-y: auto;
+  gap: 10px;
+}
+
+.empty-ecosystem {
+  text-align: center;
+  color: #557a33;
+  font-style: italic;
+  width: 100%;
+}
+
+.plants-container, .animals-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.species {
+  cursor: pointer;
+  font-size: 2.5rem;
+  transition: transform 0.3s ease;
+  user-select: none;
+  padding: 4px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(30, 80, 20, 0.15);
+}
+
+.species:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 14px rgba(30, 80, 20, 0.3);
+}
+
+/* Size Variants */
+.species.small {
+  font-size: 1.8rem;
+}
+
+.species.medium {
+  font-size: 2.4rem;
+}
+
+.species.large {
+  font-size: 3.4rem;
+}
+
+/* Plants and Animals Styling */
+.plant {
+  color: #357a38;
+}
+
+.animal {
+  color: #b45309;
+}
+
+/* Species Selection Panel */
+.species-selection {
+  flex: 0 0 280px;
+  background: #d0f0f3;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: inset 0 0 10px rgba(26, 87, 94, 0.25);
+}
+
+.species-selection h3 {
+  margin-bottom: 12px;
+  color: #0b4e55;
+  font-weight: 700;
+}
+
+.species-category {
+  margin-bottom: 20px;
+}
+
+.species-category h4 {
+  font-size: 1.1rem;
+  color: #095258;
+  margin-bottom: 10px;
+}
+
+/* Species list */
+.species-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.species-item {
+  background: #9ee6f4;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #064751;
+  font-weight: 600;
+  min-width: 90px;
+  user-select: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.species-item:hover:not(.disabled) {
+  background-color: #0590bc;
+  color: white;
+  border-color: #027a9b;
+}
+
+.species-item.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Emoji in species item */
+.species-emoji {
+  font-size: 1.8rem;
+}
+
+/* Messages Log */
+.message-log {
+  margin-top: 18px;
+  max-height: 140px;
+  overflow-y: auto;
+  padding: 10px;
+  background: #fafefb;
+  border-radius: 8px;
+  border: 1px solid #c2e1c2;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
+  font-size: 0.9rem;
+  color: #2f4f1f;
+}
+
+.message {
+  padding: 6px 10px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.message.info {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.message.success {
+  background-color: #c3e6cb;
+  color: #155724;
+  font-weight: 700;
+}
+
+.message.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  font-weight: 600;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  font-weight: 700;
+}
+
+/* Game Controls */
+.game-controls {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.game-controls button {
+  background-color: #357a38;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.game-controls button:hover {
+  background-color: #2a5d28;
+}
+
+.game-objective {
+  flex: 1;
+  font-size: 1rem;
+  color: #235122;
+}
+
+/* Game Status Modal */
+.game-status-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(46, 77, 37, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1010;
+  padding: 20px;
+  box-sizing: border-box;
+  animation: fadeInModal 0.5s ease forwards;
+}
+
+@keyframes fadeInModal {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.modal-content {
+  background: #f0fdfa;
+  border-radius: 16px;
+  padding: 30px 40px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 0 45px 8px rgba(53, 122, 56, 0.35);
+  text-align: center;
+  color: #2e4d25;
+  font-weight: 600;
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.modal-content button {
+  background-color: #357a38;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #2a5d28;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .game-container {
+    flex-direction: column;
+  }
+  .resources-panel, .species-selection, .ecosystem-display {
+    flex: 1 1 100%;
+  }
+}/* NaturalGame.css */
+.natural-game {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #4caf50;
+}
+
+.game-header h2 {
+  color: #2e7d32;
+  margin: 0;
+}
+
+.score {
+  background-color: #4caf50;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+.question {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.question h3 {
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.option-btn {
+  padding: 12px 20px;
+  background-color: white;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  color: #2e7d32;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+  background-color: #e8f5e9;
+  transform: translateY(-2px);
+}
+
+.option-btn:active {
+  transform: translateY(0);
+}
+
+.completion-screen {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.completion-screen h3 {
+  color: #2e7d32;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.completion-screen p {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.play-again {
+  padding: 12px 25px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.play-again:hover {
+  background-color: #3d8b40;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .natural-game {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .game-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .question h3 {
+    font-size: 1.1rem;
+  }
+}
+/* PollutionGame.css */
+.pollution-game {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #e8f5e9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #388e3c;
+}
+
+.game-header h2 {
+  color: #1b5e20;
+  margin: 0;
+}
+
+.score {
+  background-color: #388e3c;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #c8e6c9;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #388e3c;
+  transition: width 0.3s ease;
+}
+
+.question {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.question h3 {
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.option-btn {
+  padding: 12px 20px;
+  background-color: white;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  color: #2e7d32;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+  background-color: #c8e6c9;
+  transform: translateY(-2px);
+}
+
+.option-btn:active {
+  transform: translateY(0);
+}
+
+.completion-screen {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.completion-screen h3 {
+  color: #2e7d32;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.completion-screen p {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.play-again {
+  padding: 12px 25px;
+  background-color: #388e3c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.play-again:hover {
+  background-color: #2e7d32;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .pollution-game {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .game-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .question h3 {
+    font-size: 1.1rem;
+  }
+}/* ClimateGame.css */
+.climate-game {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #e3f2fd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #1565c0;
+}
+
+.game-header h2 {
+  color: #0d47a1;
+  margin: 0;
+}
+
+.score {
+  background-color: #1976d2;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #bbdefb;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #1976d2;
+  transition: width 0.3s ease;
+}
+
+.question {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.question h3 {
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.option-btn {
+  padding: 12px 20px;
+  background-color: white;
+  border: 2px solid #42a5f5;
+  border-radius: 8px;
+  color: #1565c0;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+  background-color: #bbdefb;
+  transform: translateY(-2px);
+}
+
+.option-btn:active {
+  transform: translateY(0);
+}
+
+.completion-screen {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.completion-screen h3 {
+  color: #1565c0;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.completion-screen p {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.play-again {
+  padding: 12px 25px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.play-again:hover {
+  background-color: #1565c0;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .climate-game {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .game-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .question h3 {
+    font-size: 1.1rem;
+  }
+}
