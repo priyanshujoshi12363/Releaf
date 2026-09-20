@@ -72,7 +72,7 @@ const MainDashboard = () => {
         key={weather}
         className="background-video"
       >
-        <source src={"/sunny.mp4"} type="video/mp4" />
+        <source src={weather === "rainy" ? "/rainy.mp4" : "/sunny.mp4"} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -88,23 +88,21 @@ const MainDashboard = () => {
           <div className="profile">
             <div className="level-badge">
               <span className="badge-icon">🏆</span>
-              <h2>Level-{player?.Level}</h2>
+              <h2>Level {player?.Level ?? "-"}</h2>
             </div>
             <div className="streak-counter">
               <span className="streak-icon">🔥</span>
-              <h2>{player?.streak} days</h2>
+              <h2>{player?.streak ?? 0} days</h2>
             </div>
             <div className="streak-counter">
               <span className="streak-icon">Xp🔥</span>
               <div className="progress-bar">
                 <div
                   className="progress-fill"
-                  style={{
-                    width: `${(player?.playerXp / 100) * 100}%`,
-                  }}
+                  style={{ width: `${Math.min(player?.playerXp ?? 0, 100)}%` }}
                 ></div>
               </div>
-              <p>{player?.playerXp} XP</p>
+              <p>{player?.playerXp ?? 0} XP</p>
             </div>
           </div>
         </div>
@@ -132,7 +130,7 @@ const MainDashboard = () => {
       <main className="content">
         <div className="glass">
           <div className="welcome-container pixel-box">
-            <h1>Welcome, {player?.PlayerName}</h1>
+            <h1>Welcome, {player?.PlayerName ?? "Player"}</h1>
             <p>Click on learn to start your journey towards a greener planet</p>
             <button className="btn" onClick={() => navigate("/learn")}>Start Learning</button>
           </div>
@@ -146,10 +144,10 @@ const MainDashboard = () => {
             <div className="progress-bar">
               <div
                 className="progress-fill"
-                style={{ width: `${player?.EcoLearn}%` }}
+                style={{ width: `${player?.EcoLearn ?? 0}%` }}
               ></div>
             </div>
-            <p>{player?.EcoLearn}%</p>
+            <p>{player?.EcoLearn ?? 0}%</p>
           </div>
 
           <div className="grid-item pixel-box">
@@ -157,10 +155,10 @@ const MainDashboard = () => {
             <div className="progress-bar">
               <div
                 className="progress-fill"
-                style={{ width: `${player?.GamePoint}%` }}
+                style={{ width: `${player?.GamePoint ?? 0}%` }}
               ></div>
             </div>
-            <p>{player?.GamePoint}%</p>
+            <p>{player?.GamePoint ?? 0}%</p>
           </div>
 
           <div className="grid-item pixel-box">
@@ -168,10 +166,10 @@ const MainDashboard = () => {
             <div className="progress-bar">
               <div
                 className="progress-fill"
-                style={{ width: `${player?.Quize}%` }}
+                style={{ width: `${player?.Quize ?? 0}%` }}
               ></div>
             </div>
-            <p>{player?.Quize}%</p>
+            <p>{player?.Quize ?? 0}%</p>
           </div>
         </div>
       </main>
